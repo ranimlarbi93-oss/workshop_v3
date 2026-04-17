@@ -62,6 +62,7 @@ export class ListSuggestionComponent {
   }
 
   searchText: string = '';
+<<<<<<< HEAD
 
   ngOnInit() {
     const data = localStorage.getItem('suggestions');
@@ -70,4 +71,6 @@ export class ListSuggestionComponent {
       this.suggestions = [...this.suggestions, ...nouvellesSuggestions];
     }
   }
+=======
+>>>>>>> 675f67088f207cdbd41b08881ce0744b16a5befa
 }

@@ -77,6 +77,7 @@
 .details:hover {
   background-color: #5a6268;
 }
+<<<<<<< HEAD
 
 .header-bar{
   display:flex;
@@ -98,3 +99,5 @@
 .add-btn:hover{
   opacity:0.9;
 }
+=======
+>>>>>>> 675f67088f207cdbd41b08881ce0744b16a5befa
