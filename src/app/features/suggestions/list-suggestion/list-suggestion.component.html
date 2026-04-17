@@ -1,0 +1,46 @@
+<h2 class="title">Liste des suggestions</h2>
+
+<input
+  type="text"
+  placeholder="Rechercher une suggestion"
+  [(ngModel)]="searchText"
+  class="search"
+/>
+
+<div *ngFor="let s of suggestions" class="card">
+
+  <h3>{{ s.title }}</h3>
+
+  <p class="category">
+    {{ s.category }} | {{ s.date | date:'dd MMM yyyy' }}
+  </p>
+
+  <p>{{ s.description }}</p>
+
+  <span
+    class="status"
+    [ngClass]="{
+      'accepted': s.status === 'acceptee',
+      'refused': s.status === 'refusee'
+    }"
+  >
+    {{ s.status }}
+  </span>
+
+  <div class="actions" *ngIf="s.status !== 'refusee'">
+
+    <button class="like" (click)="like(s)">
+      👍 Like {{ s.nbLikes }}
+    </button>
+
+    <button class="fav" (click)="addToFavorites(s)">
+      ♡ Ajouter aux favoris
+    </button>
+
+  </div>
+
+  <button class="details" [routerLink]="['/suggestions', s.id] " [state]="{ suggestion: s }">
+    Details
+  </button>
+
+</div>
