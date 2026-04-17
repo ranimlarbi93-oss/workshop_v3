@@ -1,0 +1,39 @@
+<div class="details-container">
+
+  <h2>Détails de la suggestion</h2>
+
+  <div class="card">
+
+
+    <h3>{{ suggestion?.title }}</h3>
+
+    <p class="category">
+      {{ suggestion?.category }} | {{ suggestion?.date | date:'dd MMM yyyy' }}
+    </p>
+
+    <p class="description">
+      {{ suggestion?.description }}
+    </p>
+
+    <span
+      class="status"
+      [ngClass]="{
+        'accepted': suggestion?.status === 'acceptee',
+        'refused': suggestion?.status === 'refusee'
+      }"
+    >
+      {{ suggestion?.status }}
+    </span>
+
+    <p class="likes">👍 {{ suggestion?.nbLikes }} Likes</p>
+
+    <button class="back" routerLink="/suggestions">
+      ← Retour à la liste
+    </button>
+
+    <p><strong>ID :</strong> {{ suggestion?.id }}</p>
+
+  </div>
+
+
+</div>

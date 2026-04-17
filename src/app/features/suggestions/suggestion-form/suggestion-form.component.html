@@ -1,0 +1,62 @@
+<div class="form-container">
+  <h2>Ajouter une suggestion</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Titre -->
+    <div class="form-group">
+      <label>Titre</label>
+      <input type="text" formControlName="title" />
+      <small *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+        Titre invalide (Majuscule + min 5 caractères)
+      </small>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+      <small *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+        Minimum 30 caractères
+      </small>
+    </div>
+
+    <!-- Catégorie -->
+    <div class="form-group">
+      <label>Catégorie</label>
+      <select formControlName="category">
+        <option value="">Choisir une catégorie</option>
+        <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+      </select>
+      <small *ngIf="form.get('category')?.invalid && form.get('category')?.touched">
+        Champ obligatoire
+      </small>
+    </div>
+
+    <!-- Date -->
+    <div class="form-group">
+      <label>Date</label>
+      <input
+        type="date"
+        formControlName="date">
+    </div>
+
+    <!-- Status -->
+    <div class="form-group">
+      <label>Status</label>
+      <select formControlName="status"
+              [class.accepted]="form.get('status')?.value==='acceptee'"
+
+              [class.refused]="form.get('status')?.value==='refusee'">>
+        <option value="en_attente">En attente</option>
+        <option value="acceptee">Acceptée</option>
+        <option value="refusee">Refusée</option>
+      </select>    </div>
+
+    <!-- Bouton -->
+    <button type="submit" [disabled]="form.invalid">
+      Soumettre
+    </button>
+
+  </form>
+</div>
